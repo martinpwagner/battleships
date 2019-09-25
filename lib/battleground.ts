@@ -1,12 +1,18 @@
-import { WrongShipParametersError } from './errors'
-import { is } from '@babel/types';
+export type IOccupiedArea = { x: string, y: number, hit: boolean };
+export type IShip = { length: number; occupiedAreas: IOccupiedArea[]; hits: number; down: boolean; };
+export type IBasicShipData = { length: number; x: number; y: number; isFacedX: boolean };
+export type IBattleground = { 
+    [x: string]: 
+    { [y: number]: IShip}; 
+};
 
 export const rows = "ABCDEFGHIJ";
-const rowList = rows.split('');
+export const rowList: string[] = rows.split('');
 
-export function createBattleground() {
+import { WrongShipParametersError } from './errors';
+
+export function createBattleground(): IBattleground {
     let rowsObject = {};
-
 
     for (let i = 0; i < 10; i++) {
         rowsObject[rowList[i]] = new Array(10);
@@ -15,7 +21,7 @@ export function createBattleground() {
     return rowsObject;
 }
 
-export function createOccupiedArea(x, y) {
+export function createOccupiedArea(x: number, y: number): IOccupiedArea {
     return {
         x: rowList[x],
         y,
@@ -23,7 +29,7 @@ export function createOccupiedArea(x, y) {
     }
 }
 
-export function createShip(x, y, length, isFacedX) {
+export function createShip(x: number, y: number, length: number, isFacedX: boolean): IShip {
     let occupiedAreas = new Array(length);
 
     if(isFacedX) {
@@ -41,7 +47,7 @@ export function createShip(x, y, length, isFacedX) {
         occupiedAreas,
         hits: 0,
         down: false
-    }
+    } as IShip;
 }
 
 /**
@@ -50,12 +56,12 @@ export function createShip(x, y, length, isFacedX) {
  * @param {number} y 
  * @param {number} length 
  * @param {boolean} isFacedX 
- * @param {Battleground} battleground
+ * @param {IBattleground} battleground
  * @throws {WrongShipParametersError} If desired ship isn't sane
- * @returns {Array} First element is new battleground, second is a handle to the ship 
+ * @returns {IShip} First element is new battleground, second is a handle to the ship 
  */
 
-export function createShipOnBattleground(x, y, length, isFacedX, battleground) {
+export function createShipOnBattleground(x: number, y: number, length: number, isFacedX: boolean, battleground: IBattleground): IShip {
     if((isFacedX && (x + length) > 10) || (!isFacedX && (y + length) > 10)) {
         throw new WrongShipParametersError(length, x, y, isFacedX);
     }

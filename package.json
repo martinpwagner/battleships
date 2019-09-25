@@ -4,18 +4,21 @@
   "description": "",
   "main": "bin/index.js",
   "scripts": {
-    "build": "babel",
+    "build": "webpack",
     "test": "jest"
   },
   "author": "Marcin P. Wagner",
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/plugin-transform-typescript": "^7.6.0",
     "@babel/preset-env": "^7.6.2",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
+    "typescript": "^3.6.3",
     "webpack": "^4.41.0"
   },
   "dependencies": {
@@ -27,7 +30,9 @@
       "@babel/preset-env"
     ],
     "plugins": [
-      "@babel/plugin-transform-runtime"
+      "@babel/plugin-transform-typescript",
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-class-properties"
     ]
   }
 }
