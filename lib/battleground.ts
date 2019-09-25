@@ -1,17 +1,8 @@
-export type IOccupiedArea = { x: string, y: number, hit: boolean };
-export type IShip = { length: number; occupiedAreas: IOccupiedArea[]; hits: number; down: boolean; };
-export type IBasicShipData = { length: number; x: number; y: number; isFacedX: boolean };
-export type IBattleground = { 
-    [x: string]: 
-    { [y: number]: IShip}; 
-};
-
-export const rows = "ABCDEFGHIJ";
-export const rowList: string[] = rows.split('');
-
 import { WrongShipParametersError } from './errors';
+import { IBattlegroundMap, IOccupiedArea, IShip, IBattleground } from './battleground.types';
+import { rowList } from './gameBasics';
 
-export function createBattleground(): IBattleground {
+export function createBattlegroundMap(): IBattlegroundMap {
     let rowsObject = {};
 
     for (let i = 0; i < 10; i++) {
@@ -19,6 +10,15 @@ export function createBattleground(): IBattleground {
     }
 
     return rowsObject;
+}
+
+export function createBattleground(): IBattleground {
+    return {
+        map: createBattlegroundMap(),
+        ships: [],
+        shipsDown: 0,
+        shipsUp: 0
+    }
 }
 
 export function createOccupiedArea(x: number, y: number): IOccupiedArea {
@@ -69,8 +69,11 @@ export function createShipOnBattleground(x: number, y: number, length: number, i
     const ship = createShip(x, y, length, isFacedX);
 
     ship.occupiedAreas.forEach((area) => 
-        battleground[area.x][area.y] = ship
+        battleground.map[area.x][area.y] = ship
     )
+    
+    battleground.ships.push(ship);
+    battleground.shipsUp++;
 
     return ship;
 }

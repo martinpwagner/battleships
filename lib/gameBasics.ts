@@ -1,3 +1,5 @@
+import { IShip } from "./battleground.types";
+
 /**
  * @constant
  * @type {number} Number of destroyers on map
@@ -22,6 +24,18 @@ export const BATTLESHIP_LENGTH: number = 5;
  */
 export const DESTROYER_LENGTH: number = 4;
 
-export const placedShips = [];
-export const placedDestroyers = [];
-export const placedBattleships = [];
+/**
+ * @constant
+ * @type {string} Possible ABC... rows 
+ */
+export const rows: string = "ABCDEFGHIJ";
+
+/**
+ * @constant
+ * @type {string[]} Row chars
+ */
+export const rowList: string[] = rows.split('');
+
+export const placedShips: Array<IShip> = [];
+export const placedDestroyers: Array<IShip> = [];
+export const placedBattleships: Array<IShip> = [];

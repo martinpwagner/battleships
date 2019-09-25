@@ -1,4 +1,4 @@
-import { IBasicShipData } from "./battleground";
+import { IBasicShipData } from "./battleground.types";
 
 export class WrongShipParametersError extends Error {
     data = {} as IBasicShipData;
