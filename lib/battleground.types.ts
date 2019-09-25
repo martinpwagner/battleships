@@ -20,3 +20,8 @@ export type IBattleground = {
     shipsUp: number,
     shipsDown: number
 }
+
+export type IShipsPlaced = {
+    ships: Array<IShip>,
+    number: number
+}
