@@ -1,4 +1,4 @@
-import { WrongShipParametersError } from '../lib/errors';
+import { WrongShipParametersError } from '../src/lib/errors';
 
 describe('WrongShipParametersError', () => {
     it('can be thrown', () => {

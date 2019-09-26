@@ -1,4 +1,4 @@
-import * as Chance from 'chance';
+const Chance = require('chance');
 import { IBasicCoords } from './battleground.types';
 
 const chance = createChance();

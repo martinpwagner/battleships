@@ -1,5 +1,5 @@
-import { createBattleground, createOccupiedArea, createShip, createShipOnBattleground } from '../lib/battleground';
-import { WrongShipParametersError } from '../lib/errors';
+import { createBattleground, createOccupiedArea, createShip, createShipOnBattleground } from '../src/lib/battleground';
+import { WrongShipParametersError } from '../src/lib/errors';
 
 describe('createBattleground', () => {
     let battleground;

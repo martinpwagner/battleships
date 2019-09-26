@@ -1,4 +1,4 @@
-import { createChance, getRandomCoords, getIsFacingX } from '../lib/coordsAndPosition'
+import { createChance, getRandomCoords, getIsFacingX } from '../src/lib/coordsAndPosition'
 
 describe('getRandomCoords', () => {
     const chanceInstance = createChance("testenv");

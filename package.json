@@ -2,10 +2,10 @@
   "name": "battleships",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "test": "jest"
+    "test": "jest",
+    "start": "node dist/index.js"
   },
   "author": "Marcin P. Wagner",
   "license": "UNLICENSED",
@@ -21,12 +21,8 @@
     "@types/node": "^12.7.8",
     "@types/webpack-env": "^1.14.0",
     "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
-    "ts-loader": "^6.1.2",
-    "typescript": "^3.6.3",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+    "typescript": "^3.6.3"
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
