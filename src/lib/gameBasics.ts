@@ -35,7 +35,3 @@ export const rows: string = "ABCDEFGHIJ";
  * @type {string[]} Row chars
  */
 export const rowList: string[] = rows.split('');
-
-export const placedShips: Array<IShip> = [];
-export const placedDestroyers: Array<IShip> = [];
-export const placedBattleships: Array<IShip> = [];

@@ -1,9 +1,10 @@
 import { NUM_BATTLESHIPS, NUM_DESTROYERS, BATTLESHIP_LENGTH, DESTROYER_LENGTH } from './gameBasics';
-import { createBattleground, createShipOnBattleground } from './battleground';
+import { createShipOnBattleground } from './battleground';
 import { getRandomCoords, getIsFacingX } from './coordsAndPosition';
-import { IShipsPlaced, IShip } from './battleground.types';
+import { IShipsPlaced, IShip, IBattleground } from './battleground.types';
+import { resetBattleground } from './gameLogic';
 
-export let battleground = createBattleground();
+let battleground: IBattleground;
 
 function placeShip(length: number): IShip {
     let coords = getRandomCoords();
@@ -14,16 +15,15 @@ function placeShip(length: number): IShip {
 export function placeShips(shipsToBePlaced: number, length: number): IShipsPlaced {
     let shipsPlaced = [];
     let numberOfShips = 0;
-
-    while(numberOfShips < shipsToBePlaced) {
+    while (numberOfShips < shipsToBePlaced) {
         try {
             shipsPlaced.push(placeShip(length));
             numberOfShips++;
-        } catch (e) {}
+        }
+        catch (e) { }
     }
-    
-    if(numberOfShips === shipsToBePlaced)
-        return {ships: shipsPlaced, number: numberOfShips};
+    if (numberOfShips === shipsToBePlaced)
+        return { ships: shipsPlaced, number: numberOfShips };
 }
 
 export function placeBattleships(): IShipsPlaced {
@@ -35,12 +35,11 @@ export function placeDestroyers(): IShipsPlaced {
 }
 
 export function placeAllShips(): IShipsPlaced {
-    battleground = createBattleground();
+    battleground = resetBattleground();
     const battleships = placeBattleships();
     const destroyers = placeDestroyers();
-
     return {
         number: battleships.number + destroyers.number,
         ships: [...destroyers.ships, ...battleships.ships]
-    }
+    };
 }

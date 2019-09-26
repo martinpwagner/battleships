@@ -16,3 +16,11 @@ export class WrongShipParametersError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
+
+export class AreaAlreadyHitError extends Error {
+    constructor(xString: string, y: number) {
+        super(`This ship was hit already at ${xString}${y+1}!`)
+        
+        Error.captureStackTrace(this, this.constructor);
+    }
+}

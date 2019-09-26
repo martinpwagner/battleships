@@ -4,21 +4,26 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "build": "webpack",
+    "build": "tsc --build tsconfig.json",
     "test": "jest"
   },
   "author": "Marcin P. Wagner",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/plugin-transform-typescript": "^7.6.0",
     "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
     "@types/chance": "^1.0.6",
+    "@types/node": "^12.7.8",
+    "@types/webpack-env": "^1.14.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
+    "ts-loader": "^6.1.2",
     "typescript": "^3.6.3",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
@@ -27,15 +32,5 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.2",
     "chance": "^1.1.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-typescript",
-      "@babel/plugin-transform-runtime",
-      "@babel/plugin-proposal-class-properties"
-    ]
   }
 }
